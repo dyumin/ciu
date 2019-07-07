@@ -4,7 +4,7 @@ static const int N = 5;
 
 int main()
 {
-    int i, p, q, id[N];
+    int i = 0, p = 0, q = 0, id[N] = {0};
 
     for (i = 0; i < N; i++)
         id[i] = i;
@@ -16,7 +16,7 @@ int main()
         if (t == id[q])
             continue;
 
-        for (i = 0; i< N; i++)
+        for (i = 0; i < N; i++)
         {
             if (id[i] == t)
                 id[i] = id[q];
