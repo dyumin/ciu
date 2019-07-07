@@ -2,6 +2,7 @@
 
 static const int N = 5;
 
+// quick find
 int main()
 {
     int i = 0, p = 0, q = 0, id[N] = {0};
