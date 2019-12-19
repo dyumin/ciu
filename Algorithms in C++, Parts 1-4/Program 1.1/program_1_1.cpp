@@ -16,14 +16,14 @@ int main()
     {
         std::cin >> p >> q;
 
-        const Array::value_type pValue = id[p];
-        const Array::value_type qValue = id[q];
-
         if (p >= id.size() || q >= id.size())
         {
             std::cout << "incorrect input" << std::endl;
             continue;
         }
+
+        const Array::value_type pValue = id[p];
+        const Array::value_type qValue = id[q];
 
         if (pValue == qValue)
         {
