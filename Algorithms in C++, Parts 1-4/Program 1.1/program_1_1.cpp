@@ -1,32 +1,46 @@
+#include <array>
 #include <iostream>
-
-static const int N = 5;
 
 // quick find
 int main()
 {
-    int i = 0, p = 0, q = 0, id[N] = {0};
-
-    for (i = 0; i < N; i++)
-        id[i] = i;
-
-    while (std::cin >> p >> q)
+    using Array = std::array<size_t, 100>;
+    Array id;
+    for (Array::size_type i = 0; i < id.size(); ++i)
     {
-        const int t = id[p];
-
-        if (t == id[q])
-            continue;
-
-        for (i = 0; i < N; i++)
-        {
-            if (id[i] == t)
-                id[i] = id[q];
-        }
-
-        std::cout << "\t" << p << "\t" << q << std::endl;
+        id[i] = i;
     }
 
-    std::cout << std::endl;
+    Array::value_type p = 0, q = 0;
+    for (Array::size_type i = 0; i < id.size(); ++i)
+    {
+        std::cin >> p >> q;
+
+        const Array::value_type pValue = id[p];
+        const Array::value_type qValue = id[q];
+
+        if (p >= id.size() || q >= id.size())
+        {
+            std::cout << "incorrect input" << std::endl;
+            continue;
+        }
+
+        if (pValue == qValue)
+        {
+            std::cout << "already connected" << std::endl;
+            continue;
+        }
+
+        for (auto& setId : id)
+        {
+            if (setId == pValue)
+            {
+                setId = qValue;
+            }
+        }
+
+        std::cout << p << " - " << q << std::endl;
+    }
 
     return 0;
 }
