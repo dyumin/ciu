@@ -1,33 +1,50 @@
+#include <array>
 #include <iostream>
 
-static const int N = 5;
-
-// quick union
+// quick union (well, not so quick actually, because first we need to do 'find')
+// find  - O(1) best case
+//       - O(n) worst case
+// union - O(1)
 int main()
 {
-    int i = 0, p = 0, q = 0, id[N] = {0};
-
-    for (i = 0; i < N; i++)
-        id[i] = i;
-
-    while (std::cin >> p >> q)
+    using Array = std::array<size_t, 5>;
+    Array id;
+    for (Array::size_type i = 0; i < id.size(); ++i)
     {
-        for (i = p; i != id[i]; i = id[i])
-            continue;
-
-        int j = 0;
-        for (j = q; j != id[j]; j = id[j])
-            continue;
-
-        if (i == j)
-            continue;
-
-        id[i] = j;
-
-        std::cout << "\t" << p << "\t" << q << std::endl;
+        id[i] = i;
     }
 
-    std::cout << std::endl;
+    Array::value_type p = 0, q = 0;
+    for (Array::size_type i = 0; i < id.size(); ++i)
+    {
+        std::cin >> p >> q;
+
+        if (p >= id.size() || q >= id.size())
+        {
+            std::cout << "incorrect input" << std::endl;
+            continue;
+        }
+
+        Array::value_type pRoot = 0, qRoot = 0;
+        // find scope
+        {
+            for (pRoot = id[p]; pRoot != id[pRoot]; pRoot = id[pRoot]);
+            for (qRoot = id[q]; qRoot != id[qRoot]; qRoot = id[qRoot]);
+
+            if (pRoot == qRoot)
+            {
+                std::cout << "already connected" << std::endl;
+                continue;
+            }
+        }
+
+        // union scope
+        {
+            id[p] = q;
+        }
+
+        std::cout << p << " - " << q << std::endl;
+    }
 
     return 0;
 }
