@@ -2,6 +2,8 @@
 #include <iostream>
 
 // quick find
+// find  - O(1) (compare sets id's)
+// union - O(n) for each pair
 int main()
 {
     using Array = std::array<size_t, 100>;
@@ -22,10 +24,10 @@ int main()
             continue;
         }
 
-        const Array::value_type pValue = id[p];
-        const Array::value_type qValue = id[q];
+        const Array::value_type pSetId = id[p];
+        const Array::value_type qSetId = id[q];
 
-        if (pValue == qValue)
+        if (pSetId == qSetId)
         {
             std::cout << "already connected" << std::endl;
             continue;
@@ -33,9 +35,9 @@ int main()
 
         for (auto& setId : id)
         {
-            if (setId == pValue)
+            if (setId == pSetId)
             {
-                setId = qValue;
+                setId = qSetId;
             }
         }
 
