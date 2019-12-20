@@ -40,7 +40,7 @@ int main()
 
         // union scope
         {
-            id[p] = q;
+            id[pRoot] = qRoot;
         }
 
         std::cout << p << " - " << q << std::endl;
