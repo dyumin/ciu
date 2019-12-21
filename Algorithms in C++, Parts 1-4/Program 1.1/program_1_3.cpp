@@ -2,6 +2,7 @@
 #include <iostream>
 
 // weighted quick union
+// https://www.youtube.com/watch?v=xc9s9wdaSdU
 int main()
 {
     using Array = std::array<size_t, 5>;
