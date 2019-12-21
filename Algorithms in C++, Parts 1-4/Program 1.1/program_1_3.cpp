@@ -35,15 +35,18 @@ int main()
                 continue;
             }
 
-            if (sz[pRoot] > sz[qRoot])
+            // union scope
             {
-                id[qRoot] = pRoot;
-                sz[pRoot] += sz[qRoot];
-            }
-            else
-            {
-                id[pRoot] = qRoot;
-                sz[qRoot] += sz[pRoot];
+                if (sz[pRoot] > sz[qRoot])
+                {
+                    id[qRoot] = pRoot;
+                    sz[pRoot] += sz[qRoot];
+                }
+                else
+                {
+                    id[pRoot] = qRoot;
+                    sz[qRoot] += sz[pRoot];
+                }
             }
         }
 
