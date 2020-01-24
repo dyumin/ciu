@@ -18,9 +18,9 @@ int main()
         std::cin >> f >> t;
 
         auto fEnd = conn[f];
-        for (; conn[fEnd] != conn[conn[fEnd]]; fEnd = conn[fEnd]);
+        for (; fEnd != conn[fEnd]; fEnd = conn[fEnd]);
         auto tEnd = conn[t];
-        for (; conn[tEnd] != conn[conn[tEnd]]; tEnd = conn[tEnd]);
+        for (; tEnd != conn[tEnd]; tEnd = conn[tEnd]);
 
         if (fEnd == tEnd)
         {
